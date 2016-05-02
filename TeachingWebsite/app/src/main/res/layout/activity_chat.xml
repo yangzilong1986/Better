@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:zhy="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <!--tab指示器-->
+        <com.ikok.teachingwebsite.CustomView.ViewPagerIndicatorWhite
+            android:id="@+id/id_chat_indicator_white"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal"
+            android:background="@color/colorMain"
+            zhy:visible_tab_count="2" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="#FFFFFFFF"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="#FFFFFFFF"
+                android:textSize="16sp" />
+        </com.ikok.teachingwebsite.CustomView.ViewPagerIndicatorWhite>
+
+        <!--文章与活动的ViewPager-->
+        <android.support.v4.view.ViewPager
+            android:id="@+id/id_chat_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            >
+
+        </android.support.v4.view.ViewPager>
+
+    </LinearLayout>
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/id_chat_floatBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_edit_white_24dp" />
+
+    <com.github.fabtransitionactivity.SheetLayout
+        android:id="@+id/id_chat_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        app:ft_container_gravity="center"
+        app:ft_color="@color/primary"
+        android:elevation="2dp"/>
+
+
+</android.support.design.widget.CoordinatorLayout>

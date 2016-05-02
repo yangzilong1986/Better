@@ -1,0 +1,71 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
+
+    //**bmob-sdk:3.4.6版本依赖包，用于兼容Android6.0系统**
+    useLibrary 'org.apache.http.legacy'
+
+    defaultConfig {
+        applicationId "com.ikok.teachingwebsite"
+        minSdkVersion 17
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.2.1'
+    compile 'com.android.support:design:23.2.1'
+    // bmob-sdk ：Bmob的android sdk包
+    compile 'cn.bmob.android:bmob-sdk:3.4.6'
+    //自`V3.4.3版本`开始，使用`okhttp`优化SDK的网络框架
+    compile 'com.squareup.okhttp:okhttp:2.4.0'
+    compile 'com.squareup.okio:okio:1.4.0'
+    compile 'com.android.support:support-v4:23.2.1'
+    // 颜色加深沉浸式状态栏
+    compile 'com.jaeger.statusbaruitl:library:1.0.0'
+    // 完全沉浸式状态栏
+    compile 'com.github.niorgai:StatusBarCompat:1.0.1'
+    // 搜索框
+    compile 'com.lapism:searchview:2.2'
+    // MaterialEditText
+    compile 'com.rengwuxian.materialedittext:library:2.1.4'
+    // 显示或隐藏密码的文本框
+    compile 'com.github.scottyab:showhidepasswordedittext:0.6'
+    // 带动画效果的复选框
+    compile project(':SmoothCheckBox-library')
+    // 裁剪图片
+    compile project(':ImageCropView-library')
+    // 轮播图
+    compile 'com.synnapps:carouselview:0.0.9'
+    // 圆形的ImageView
+    compile 'de.hdodenhof:circleimageview:2.0.0'
+    // 数字进度条
+    compile 'com.daimajia.numberprogressbar:library:1.2@aar'
+    // Like Button
+    compile 'com.github.jd-alexander:likebutton:0.2.0'
+    // FloatActionButton 点击进入活动动画
+    compile 'com.github.coyarzun89:fabtransitionactivity:0.2.0'
+    // 上面的控件依据这个库 CircularReveal
+    compile('com.github.ozodrukh:CircularReveal:1.3.1@aar') {
+        transitive = true;
+    }
+    // 圆圈进度条
+    //    compile('com.lsjwzh:materialloadingprogressbar:0.5.8-RELEASE')
+    // 图片浏览缩放控件
+    //    compile 'com.bm.photoview:library:1.3.6'
+    compile files('libs/weiboSDKCore_3.1.4.jar')
+    compile files('libs/SocialSDK_Sina.jar')
+    compile files('libs/umeng_social_sdk.jar')
+}

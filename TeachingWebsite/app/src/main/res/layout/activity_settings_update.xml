@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                xmlns:custom="http://schemas.android.com/tools"
+    >
+
+    <include layout="@layout/activity_top_bar" />
+
+    <com.daimajia.numberprogressbar.NumberProgressBar
+        android:id="@+id/id_settings_progressbar"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        style="@style/NumberProgressBar_Default"
+
+        custom:progress_unreached_color="#CCCCCC"
+        custom:progress_reached_color="#3498DB"
+
+        custom:progress_unreached_bar_height="0.75dp"
+        custom:progress_reached_bar_height="1.5dp"
+
+        custom:progress_text_size="10sp"
+        custom:progress_text_color="#3498DB"
+        custom:progress_text_offset="1dp"
+        custom:progress_text_visibility="visible"
+
+        custom:progress_max="100"
+        custom:progress_curent="0"
+        />
+
+    <TextView
+        android:id="@+id/id_settings_update_result"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/id_settings_progressbar"
+        android:textSize="14sp"
+        android:textColor="@color/colorDefault"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

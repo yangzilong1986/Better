@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              xmlns:zhy="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:background="@color/white"
+    >
+
+    <include layout="@layout/activity_top_bar" />
+
+    <!--顶部课程图片-->
+    <ImageView
+        android:id="@+id/id_item_course_img"
+        android:layout_width="match_parent"
+        android:scaleType="fitXY"
+        android:layout_height="160dp"/>
+
+    <!--tab指示器-->
+    <com.ikok.teachingwebsite.CustomView.ViewPagerIndicator
+        android:id="@+id/id_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        zhy:visible_tab_count="3" >
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textColor="#FF20CC85"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textColor="#FF20CC85"
+        android:textSize="16sp" />
+    </com.ikok.teachingwebsite.CustomView.ViewPagerIndicator>
+
+    <!--课程章节和课程描述的ViewPager-->
+    <android.support.v4.view.ViewPager
+        android:id="@+id/id_item_course_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
+
+    </android.support.v4.view.ViewPager>
+
+    <!--底部学习课程或退出课程按钮-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/id_course_item_join_btn"
+            android:text="@string/text_join_course"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:background="@drawable/shape_course_item_button_join"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_height="50dp"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

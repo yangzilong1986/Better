@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:orientation="horizontal"
+    android:paddingTop="2dp"
+    android:paddingBottom="2dp"
+    android:paddingRight="10dp"
+    >
+
+    <ImageView
+        android:id="@+id/id_course_item_img"
+        android:layout_width="0dp"
+        android:layout_weight="4"
+        android:scaleType="fitCenter"
+        android:layout_height="match_parent" />
+
+    <RelativeLayout
+        android:layout_height="100dp"
+        android:layout_width="0dp"
+        android:layout_weight="6"
+        >
+
+        <TextView
+            android:id="@+id/id_course_item_name"
+            android:text="@string/error_invalid_password"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/id_icon_clock"
+            android:src="@drawable/icon_clock"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="10dp"
+            android:scaleType="centerCrop"
+            android:layout_width="12dp"
+            android:layout_height="12dp"/>
+
+        <TextView
+            android:id="@+id/id_course_item_learn_time"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/id_icon_clock"
+            android:layout_marginLeft="4dp"
+            android:text="@string/error_invalid_password"
+            android:textSize="12sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/id_course_item_update_time"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/error_invalid_password"
+            android:textSize="12sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+</LinearLayout>

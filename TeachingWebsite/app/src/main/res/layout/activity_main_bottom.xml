@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingTop="8dp"
+    android:paddingBottom="6dp"
+    android:background="@drawable/shape_main_bottom"
+    >
+
+    <LinearLayout
+        android:id="@+id/id_tab_course"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+
+        <ImageView
+            android:id="@+id/id_tab_img_course"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_course_24dp"
+            />
+
+        <TextView
+            android:id="@+id/id_tab_text_course"
+            android:text="@string/text_course"
+            android:paddingTop="4dp"
+            android:textSize="12dp"
+            android:textColor="@color/colorBottomTabText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/id_tab_chat"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+
+        <ImageView
+            android:id="@+id/id_tab_img_chat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_chat_24dp"
+            />
+
+        <TextView
+            android:id="@+id/id_tab_text_chat"
+            android:text="@string/text_chat"
+            android:paddingTop="4dp"
+            android:textSize="12dp"
+            android:textColor="@color/colorBottomTabText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/id_tab_myself"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+
+        <ImageView
+            android:id="@+id/id_tab_img_myself"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_user_24dp"
+            />
+
+        <TextView
+            android:id="@+id/id_tab_text_myself"
+            android:text="@string/text_myself"
+            android:paddingTop="4dp"
+            android:textSize="12dp"
+            android:textColor="@color/colorBottomTabText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

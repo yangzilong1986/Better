@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+    >
+
+    <include layout="@layout/activity_top_bar" />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/id_settings_feedback_content"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        app:met_maxCharacters="100"
+        android:layout_marginLeft="10dp"
+        android:hint="@string/text_settings_feedback_content"
+        app:met_primaryColor="@color/colorMain"
+        android:textColorHint="@color/colorHint"
+        android:gravity="top"
+        android:layout_marginRight="10dp"
+        android:lineSpacingExtra="4dp"
+        android:inputType="textMultiLine"
+        android:layout_height="200dp"/>
+
+    <EditText
+        android:id="@+id/id_settings_feedback_contact"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textColorHint="@color/colorHint"
+        android:hint="@string/text_settings_feedback_hint"
+        />
+
+    <Button
+        android:id="@+id/id_settings_feedback_btn"
+        android:text="@string/text_settings_submit"
+        android:textSize="18sp"
+        android:background="@drawable/shape_course_item_button_join"
+        android:textColor="@color/white"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"/>
+
+</LinearLayout>

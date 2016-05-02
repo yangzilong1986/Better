@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <!--复选框颜色-->
+    <color name="colorCheckboxBackground">#FFFFFF</color>
+    <color name="colorCheckboxBorder">#584F60</color>
+    <!--主界面底部tab文字默认颜色-->
+    <color name="colorBottomTabText">#929292</color>
+    <!--提示文字颜色-->
+    <color name="colorHintInfo">#FF6666</color>
+
+    <color name="colorMain">#FF20CC85</color>
+    <color name="colorHighLight">#222222</color>
+    <color name="colorDefault">#929292</color>
+    <color name="colorDefaultGray">#DDDDDD</color>
+    <color name="colorWarning">#F01400</color>
+    <color name="colorHint">#AFAFAF</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gray">#808080</color>
+    <color name="light_blue">#6593cb</color>
+
+    <color name="primary">#D32F2F</color>
+    <color name="colorSettings">#B8B9B7</color>
+    <color name="colorCrop">#777777</color>
+
+    <color name="colorguideone">#67D5D1</color>
+    <color name="colorguidetwo">#D8A669</color>
+    <color name="colorguidethree">#D5806A</color>
+
+</resources>

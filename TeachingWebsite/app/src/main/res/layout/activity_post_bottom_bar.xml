@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp"
+    android:background="@drawable/shape_main_bottom"
+    android:id="@+id/id_post_bottom_bar"
+    >
+
+    <ImageView
+        android:id="@+id/id_post_bottom_bar_back"
+        android:src="@drawable/icon_message"
+        android:layout_width="0dp"
+        android:scaleType="centerInside"
+        android:layout_weight="1"
+        android:layout_height="50dp"/>
+
+    <!--
+    点赞按钮
+    <com.like.LikeButton-->
+        <!--android:id="@+id/id_post_bottom_bar_thumb"-->
+        <!--app:unlike_drawable="@drawable/icon_thumb"-->
+        <!--app:like_drawable="@drawable/icon_thumb_clicked"-->
+        <!--app:icon_size="24dp"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_weight="1"-->
+        <!--android:layout_height="40dp"/>-->
+
+    <com.like.LikeButton
+        android:id="@+id/id_post_bottom_bar_like"
+        app:like_drawable="@drawable/icon_star_selected"
+        app:unlike_drawable="@drawable/icon_star"
+        android:paddingTop="2dp"
+        app:icon_size="28dp"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="50dp"/>
+
+    <ImageView
+        android:id="@+id/id_post_bottom_bar_share"
+        android:src="@drawable/icon_share"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:scaleType="centerInside"
+        android:layout_height="50dp"/>
+
+</LinearLayout>

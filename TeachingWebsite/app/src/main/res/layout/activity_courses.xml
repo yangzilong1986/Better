@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <!--<com.synnapps.carouselview.CarouselView-->
+        <!--android:id="@+id/id_carouselView"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="140dp"-->
+        <!--app:fillColor="#FFFFFFFF"-->
+        <!--app:pageColor="#00000000"-->
+        <!--app:radius="6dp"-->
+        <!--app:slideInterval="3000"-->
+        <!--app:strokeColor="#FF777777"-->
+        <!--app:strokeWidth="1dp"/>-->
+
+    <!--<TextView-->
+        <!--android:text="@string/text_course_list"-->
+        <!--android:padding="10dp"-->
+        <!--android:background="@color/white"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"/>-->
+
+    <include layout="@layout/activity_course_list"/>
+
+
+</LinearLayout>

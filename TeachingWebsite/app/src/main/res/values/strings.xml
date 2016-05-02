@@ -1,0 +1,85 @@
+<resources>
+    <string name="app_name">Better</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_username">用户名</string>
+    <string name="prompt_password">密  码</string>
+    <string name="prompt_confirm_password">请再输入您的密码</string>
+    <string name="action_login">登 录</string>
+    <string name="action_sign_in">注 册</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">密码不能为空</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">用户名不能为空</string>
+    <!--注册界面-->
+    <string name="error_username_required">用户名不能为空</string>
+    <string name="error_password_required">密码不能为空</string>
+    <string name="error_password_different">两次密码不一致</string>
+    <string name="info_signin_success">注册成功</string>
+    <string name="info_signin_failed">注册失败</string>
+    <string name="info_account_existed">该用户名已存在</string>
+
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="save_account">记住账号</string>
+
+
+    <string name="pull_to_refresh">下拉刷新</string>
+    <string name="release_to_refresh">释放立即刷新</string>
+    <string name="refreshing">正在刷新...</string>
+    <string name="refresh_succeed">刷新成功</string>
+    <string name="refresh_fail">刷新失败</string>
+    <string name="pull_up_to_load">上拉加载更多</string>
+    <string name="release_to_load">释放立即加载</string>
+    <string name="loading">正在加载...</string>
+    <string name="load_succeed">加载成功</string>
+    <string name="load_fail">加载失败</string>
+    <string name="navigate">导航</string>
+    <string name="pullup_to_load">上拉加载更多</string>
+    <!--主界面tab文字-->
+    <string name="text_course_list">课程列表</string>
+    <string name="text_course">课程</string>
+    <string name="text_chat">社区</string>
+    <string name="text_download">下载</string>
+    <string name="text_myself">我的</string>
+    <!--课程按钮文字-->
+    <string name="text_join_course">学习课程</string>
+    <string name="text_exit_course">退出课程</string>
+    <!--个人界面tab文字-->
+    <string name="text_learned_course">学习的课程</string>
+    <string name="text_liked_post">收藏的文章</string>
+    <string name="text_myself_settings">发表的文章</string>
+    <!--个人设置界面文字-->
+    <string name="text_settings_nickname">修改昵称</string>
+    <string name="text_settings_userintro">修改签名</string>
+    <string name="text_settings_password">修改密码</string>
+    <string name="text_settings_clear_cache">清理缓存</string>
+    <string name="text_settings_update">检查更新</string>
+    <string name="text_settings_feedback">意见反馈</string>
+    <string name="text_settings_about">关于Better</string>
+    <string name="text_settings_quit">退出登录</string>
+    <!--修改密码文字-->
+    <string name="text_settings_old_password">旧密码：</string>
+    <string name="text_settings_new_password">新密码：</string>
+    <!--意见反馈文字-->
+    <string name="text_settings_feedback_hint">请留下联系方式，方便答疑解惑</string>
+    <string name="text_settings_submit">提 交</string>
+    <string name="text_settings_feedback_content">骚年，尽情吐槽吧</string>
+    <!--关于Better文字-->
+    <string name="text_settings_version">Version 1.0.0</string>
+    <string name="text_settings_copyright">Copyright© 2015-2016 Anonymous.All Rights Reserved</string>
+    <!--Crop-->
+    <string name="camera_not_supported">camera is not supported</string>
+    <!--写评论、空签名-->
+    <string name="text_write_something">写点儿什么吧</string>
+    <string name="text_comment">评论</string>
+    <!--无数据-->
+    <string name="has_no_data">暂时没有内容，去其他地方看看吧</string>
+    <!--写文章-->
+    <string name="text_post_title">标题</string>
+    <string name="text_post_content">文章内容</string>
+    <!--引导页-->
+    <string name="text_enter">进入Better</string>
+
+</resources>
