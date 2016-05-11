@@ -61,7 +61,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
         setContentView(R.layout.activity_main);
 //        StatusBarUtil.setColor(MainActivity.this, getResources().getColor(R.color.white));
-        StatusBarCompat.setStatusBarColor(this, getResources().getColor(R.color.white));
+        StatusBarCompat.setStatusBarColor(this, getResources().getColor(R.color.colorMain));
         // 初始化控件
         initViews();
         // 绑定点击监听器
@@ -101,7 +101,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             case R.id.id_tab_course:
                 setSelectItem(0);
 //                StatusBarUtil.setColor(MainActivity.this, getResources().getColor(R.color.white));
-                StatusBarCompat.setStatusBarColor(this, getResources().getColor(R.color.white));
+                StatusBarCompat.setStatusBarColor(this, getResources().getColor(R.color.colorMain));
                 break;
             case R.id.id_tab_chat:
                 setSelectItem(1);

@@ -81,5 +81,9 @@
     <string name="text_post_content">文章内容</string>
     <!--引导页-->
     <string name="text_enter">进入Better</string>
+    <!--课程页搜索提示-->
+    <string name="text_search_hint">搜索课程</string>
+    <string name="text_course_title">课程列表</string>
+    <string name="text_search_result">搜索结果</string>
 
 </resources>

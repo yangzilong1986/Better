@@ -99,7 +99,7 @@ public class SigninActivity extends Activity {
         });
 
         /**
-         * 登录按钮的点击事件
+         * 注册按钮的点击事件
          */
         mSigninBtn.setOnClickListener(new View.OnClickListener() {
             @Override

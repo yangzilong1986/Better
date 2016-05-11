@@ -37,6 +37,8 @@ dependencies {
     compile 'com.jaeger.statusbaruitl:library:1.0.0'
     // 完全沉浸式状态栏
     compile 'com.github.niorgai:StatusBarCompat:1.0.1'
+    // ButterKnife
+    compile 'com.jakewharton:butterknife:7.0.1'
     // 搜索框
     compile 'com.lapism:searchview:2.2'
     // MaterialEditText

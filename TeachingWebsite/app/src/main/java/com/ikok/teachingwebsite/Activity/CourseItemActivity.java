@@ -17,7 +17,6 @@ import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,10 +24,13 @@ import android.widget.Toast;
 import com.ikok.teachingwebsite.CustomView.ViewPagerIndicator;
 import com.ikok.teachingwebsite.Entity.Course;
 import com.ikok.teachingwebsite.Entity.User;
+import com.ikok.teachingwebsite.Fragment.CourseCommentFragment;
 import com.ikok.teachingwebsite.Fragment.CourseItemDescFragment;
 import com.ikok.teachingwebsite.Fragment.CourseItemListFragment;
 import com.ikok.teachingwebsite.R;
 import com.ikok.teachingwebsite.Util.CourseImgLoader;
+import com.like.LikeButton;
+import com.like.OnLikeListener;
 
 import java.io.File;
 import java.lang.reflect.Field;
@@ -36,6 +38,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.listener.DownloadFileListener;
@@ -62,17 +66,12 @@ public class CourseItemActivity extends FragmentActivity {
      * ViewPager指示器
      */
     private ViewPagerIndicator mViewPagerIndicator;
-    private List<String> titles = Arrays.asList("章节", "描述");
+    private List<String> titles = Arrays.asList("章节","评论","描述");
     /**
      * 顶部条的图片和文字
      */
     private ImageView mTopbarBackBtn;
     private TextView mTopbarTitle;
-    private ImageView mTopDownloadBtn;
-    /**
-     * 学习或退出课程的按钮
-     */
-    private Button mJoinBtn;
     /**
      * 用户已经学习的课程
      */
@@ -86,18 +85,22 @@ public class CourseItemActivity extends FragmentActivity {
      */
     private ProgressDialog mProgressDialog;
 
+    @Bind(R.id.id_course_bottom_bar_back) ImageView mCommentBtn;
+    @Bind(R.id.id_course_bottom_bar_like) LikeButton mLikeBtn;
+    @Bind(R.id.id_course_bottom_bar_download) ImageView mDownloadBtn;
+    @Bind(R.id.id_course_bottom_bar_share) ImageView mShareBtn;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_course_item);
+        ButterKnife.bind(this);
 //        StatusBarUtil.setColor(CourseItemActivity.this, getResources().getColor(R.color.colorMain));
         StatusBarCompat.setStatusBarColor(this, getResources().getColor(R.color.colorMain));
         // 初始化控件
         mTopbarBackBtn = (ImageView) findViewById(R.id.id_top_bar_img);
         mTopbarTitle = (TextView) findViewById(R.id.id_top_bar_title);
-        mTopDownloadBtn = (ImageView) findViewById(R.id.id_top_bar_download);
-        mJoinBtn = (Button) findViewById(R.id.id_course_item_join_btn);
 
         final User user = BmobUser.getCurrentUser(this, User.class);
 
@@ -124,9 +127,17 @@ public class CourseItemActivity extends FragmentActivity {
                 CourseItemActivity.this.finish();
             }
         });
+        // 课程评论按钮
+        mCommentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(CourseItemActivity.this,WriteCourseCommentActivity.class);
+                in.putExtra("course" , mCourse);
+                startActivity(in);
+            }
+        });
         // 下载按钮事件
-        mTopDownloadBtn.setVisibility(View.VISIBLE);
-        mTopDownloadBtn.setOnClickListener(new View.OnClickListener() {
+        mDownloadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
                 final BmobFile bmobFile = mCourse.getCourseResource();
@@ -179,8 +190,7 @@ public class CourseItemActivity extends FragmentActivity {
         int i = 0;
         for (; i < userCourseList.size(); i++) {
             if (userCourseList.get(i).getObjectId().equals(mCourse.getObjectId())) {
-                mJoinBtn.setBackground(getResources().getDrawable(R.drawable.shape_course_item_button_exit));
-                mJoinBtn.setText(getResources().getString(R.string.text_exit_course));
+                mLikeBtn.setLiked(true);
                 isLearned = true;
 //                Toast.makeText(CourseItemActivity.this,"已经学习该课程",Toast.LENGTH_SHORT).show();
                 break;
@@ -192,83 +202,70 @@ public class CourseItemActivity extends FragmentActivity {
 
         // 学习课程按钮事件
         // 通过标志 isLearned 来处理不同的按钮事件
-        mJoinBtn.setOnClickListener(new View.OnClickListener() {
+        mLikeBtn.setOnLikeListener(new OnLikeListener() {
+            User newUser = new User();
             @Override
-            public void onClick(View v) {
-                User newUser = new User();
-                /**
-                 * isLearned 为 false ，添加该课程到用户课程里
-                 */
-                if (!isLearned) {
-                    newUser.setLearnedCourses(userCourseList);
-                    newUser.update(CourseItemActivity.this, user.getObjectId(), new UpdateListener() {
-                        @Override
-                        public void onSuccess() {
-//                            Toast.makeText(CourseItemActivity.this,"用户添加课程成功",Toast.LENGTH_SHORT).show();
-
-                            // 添加成功后，修改按钮样式
-                            mJoinBtn.setBackground(getResources().getDrawable(R.drawable.shape_course_item_button_exit));
-                            mJoinBtn.setText(getResources().getString(R.string.text_exit_course));
-                            isLearned = true;
-                        }
-
-                        @Override
-                        public void onFailure(int i, String s) {
-                            Log.d("Anonymous", "添加课程失败: " + s + " 错误码：" + i);
-                        }
-                    });
-                } else {
-                    /**
-                     * isLearned 为 true , 从用户课程里删除该课程
-                     */
-//                    Log.d("Anonymous","删除该课程前的课程集合: " + userCourseList);
-                    // 从课程集合里删除该课程
-                    for (int j = 0; j < userCourseList.size(); j++) {
-                        if (userCourseList.get(j).getObjectId().equals(mCourse.getObjectId())) {
-                            userCourseList.remove(userCourseList.get(j));
-                        }
+            public void liked(LikeButton likeButton) {
+                newUser.setLearnedCourses(userCourseList);
+                newUser.update(CourseItemActivity.this, user.getObjectId(), new UpdateListener() {
+                    @Override
+                    public void onSuccess() {
+                        Toast.makeText(CourseItemActivity.this,"用户添加课程成功",Toast.LENGTH_SHORT).show();
+                        isLearned = true;
                     }
+                    @Override
+                    public void onFailure(int i, String s) {
+                        Log.d("Anonymous", "添加课程失败: " + s + " 错误码：" + i);
+                    }
+                });
+            }
+
+            @Override
+            public void unLiked(LikeButton likeButton) {
+                /**
+                * isLearned 为 true , 从用户课程里删除该课程
+                */
 //                    Log.d("Anonymous","删除该课程前的课程集合: " + userCourseList);
-                    newUser.setLearnedCourses(userCourseList);
-                    newUser.update(CourseItemActivity.this, user.getObjectId(), new UpdateListener() {
-                        @Override
-                        public void onSuccess() {
-//                            Toast.makeText(CourseItemActivity.this,"用户删除课程成功",Toast.LENGTH_SHORT).show();
-
-                            // 删除成功后，修改按钮样式
-                            mJoinBtn.setBackground(getResources().getDrawable(R.drawable.shape_course_item_button_join));
-                            mJoinBtn.setText(getResources().getString(R.string.text_join_course));
-                            isLearned = false;
-                        }
-
-                        @Override
-                        public void onFailure(int i, String s) {
-                            Log.d("Anonymous", "删除课程失败: " + s + " 错误码：" + i);
-                        }
-                    });
+                // 从课程集合里删除该课程
+                for (int j = 0; j < userCourseList.size(); j++) {
+                    if (userCourseList.get(j).getObjectId().equals(mCourse.getObjectId())) {
+                        userCourseList.remove(userCourseList.get(j));
+                    }
                 }
-
+//                    Log.d("Anonymous","删除该课程前的课程集合: " + userCourseList);
+                newUser.setLearnedCourses(userCourseList);
+                newUser.update(CourseItemActivity.this, user.getObjectId(), new UpdateListener() {
+                    @Override
+                    public void onSuccess() {
+                        Toast.makeText(CourseItemActivity.this,"用户删除课程成功",Toast.LENGTH_SHORT).show();
+                        isLearned = false;
+                    }
+                    @Override
+                    public void onFailure(int i, String s) {
+                        Log.d("Anonymous", "删除课程失败: " + s + " 错误码：" + i);
+                    }
+                });
             }
         });
-
-
         /**
          * 课程图片下的ViewPager设置，ViewPager指示器设置
          */
         // Viewpager
         mViewPager = (ViewPager) findViewById(R.id.id_item_course_viewpager);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("course", mCourse);
         // 课程目录Fragment
         Fragment courseItemList = new CourseItemListFragment();
-        Bundle bundle1 = new Bundle();
-        bundle1.putSerializable("course", mCourse);
-        courseItemList.setArguments(bundle1);
+        courseItemList.setArguments(bundle);
+        // 课程评论Fragment
+        Fragment courseComment = new CourseCommentFragment();
+        courseComment.setArguments(bundle);
         // 课程描述Fragment
         Fragment courseItemDesc = new CourseItemDescFragment();
-        Bundle bundle2 = new Bundle();
-        bundle2.putSerializable("course", mCourse);
-        courseItemDesc.setArguments(bundle2);
+        courseItemDesc.setArguments(bundle);
 
         mFragment.add(courseItemList);
+        mFragment.add(courseComment);
         mFragment.add(courseItemDesc);
 
         mAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
@@ -287,7 +284,7 @@ public class CourseItemActivity extends FragmentActivity {
         // tab指示器
         mViewPagerIndicator = (ViewPagerIndicator) findViewById(R.id.id_indicator);
         // 可见的tab数
-        mViewPagerIndicator.setVisibleTabCount(2);
+        mViewPagerIndicator.setVisibleTabCount(3);
         // tab标题
         mViewPagerIndicator.setTabItemTitles(titles);
         // 为指示器设置ViewPager,并指定默认显示的tab
@@ -402,7 +399,7 @@ public class CourseItemActivity extends FragmentActivity {
                         }
 
 
-                        
+
                     }
                 });
         // 设置对话框是否可以被返回键关闭

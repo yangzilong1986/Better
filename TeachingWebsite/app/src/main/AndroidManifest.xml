@@ -98,6 +98,12 @@
         <activity android:name=".Activity.GuideActivity">
 
         </activity>
+        <activity android:name=".Activity.SearchActivity">
+
+        </activity>
+        <activity android:name=".Activity.WriteCourseCommentActivity">
+
+        </activity>
 
     </application>
 

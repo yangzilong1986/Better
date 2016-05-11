@@ -5,6 +5,46 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
+    <RelativeLayout
+        android:background="@color/colorMain"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <!--<EditText-->
+            <!--android:textSize="14sp"-->
+            <!--android:hint="@string/text_search_hint"-->
+            <!--android:textColorHint="@color/colorHint"-->
+            <!--android:drawableRight="@drawable/icon_search"-->
+            <!--android:paddingRight="10dp"-->
+            <!--android:paddingLeft="10dp"-->
+            <!--android:background="@color/white"-->
+            <!--android:layout_margin="10dp"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="30dp"/>-->
+
+        <TextView
+            android:text="@string/text_course_title"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/id_search_btn"
+            android:src="@drawable/icon_search"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:layout_marginRight="5dp"
+            android:scaleType="centerCrop"
+            android:layout_width="40dp"
+            android:layout_height="40dp"/>
+
+
+    </RelativeLayout>
+
     <!--<com.synnapps.carouselview.CarouselView-->
         <!--android:id="@+id/id_carouselView"-->
         <!--android:layout_width="match_parent"-->

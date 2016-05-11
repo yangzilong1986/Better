@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Window;
 import android.widget.Toast;
 
 import com.ikok.teachingwebsite.R;
@@ -20,12 +21,14 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+
         /**
          * 初始化 Bmob SDK
          */
         Bmob.initialize(this, "6672f54e9508f8fad63daa61f2b59c9c");
 
-        Log.d("Anonymous", getClass().getSimpleName());
+        Log.d("当前所在的Activity:", getClass().getSimpleName());
 
         ActivityCollector.addActivity(this);
     }

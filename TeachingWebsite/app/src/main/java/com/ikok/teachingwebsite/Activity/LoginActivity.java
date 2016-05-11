@@ -116,26 +116,20 @@ public class LoginActivity extends BaseActivity {
         mEmailSignInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 username = mEmailView.getText().toString();
                 password = mPasswordView.getText().toString();
-
                 if (mMaterialCheckBox.isChecked()){
                     saveAccount(username,password);
                 } else {
                     dontSaveAccount();
                 }
-
                 mEmailView.setError(null);
                 mPasswordView.setError(null);
-
                 if (TextUtils.isEmpty(username)){
                     mEmailView.setError(getString(R.string.error_field_required));
-
                 } else if (TextUtils.isEmpty(password)){
                     mPasswordView.setError(getString(R.string.error_invalid_password));
                 } else {
-
                     /**
                      * 先判断网络状态是否可用
                      * 把根据名字查询的方法提取出来复用
@@ -148,10 +142,7 @@ public class LoginActivity extends BaseActivity {
                     } else {
                         toast("网络错误，请检查您的网络连接");
                     }
-
-
                 }
-
             }
         });
 

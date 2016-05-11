@@ -1,7 +1,6 @@
 package com.ikok.teachingwebsite.Fragment;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -13,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.ikok.teachingwebsite.Activity.CourseItemActivity;
+import com.ikok.teachingwebsite.Activity.SearchActivity;
 import com.ikok.teachingwebsite.Entity.Course;
 import com.ikok.teachingwebsite.R;
 import com.ikok.teachingwebsite.Util.CourseAdapter;
@@ -58,6 +58,10 @@ public class CoursesFragment extends Fragment {
      */
     private CarouselView mCarouselView;
     /**
+     * 搜索图片
+     */
+    private ImageView mSearchBtn;
+    /**
      * 图片资源数组
      */
     private int[] mAdImgs = {R.drawable.img_ad1,R.drawable.img_ad2,R.drawable.img_ad3,
@@ -81,8 +85,18 @@ public class CoursesFragment extends Fragment {
         ptrl.setOnRefreshListener(new MyListener());
         listView = (ListView) view.findViewById(R.id.content_view);
 
+        mSearchBtn = (ImageView) view.findViewById(R.id.id_search_btn);
+
+        mSearchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SearchActivity.class);
+                startActivity(intent);
+            }
+        });
+
         // 加载所有课程,并显示
-        new LoadCourseTask().execute();
+        LoadCourse();
 
         // 点击ListView的item事件
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -118,34 +132,29 @@ public class CoursesFragment extends Fragment {
     /**
      * 加载课程的异步任务
      */
-    class LoadCourseTask extends AsyncTask<Void,Void,Void>{
+    private void LoadCourse(){
+        // TODO 进行网络操作前都要先判断网络状态是否可用
+        // 创建查询
+        BmobQuery<Course> query = new BmobQuery<Course>();
+        // 查询的结果排序方式，按更新时间倒序排列
+        query.order("-courseUpdateTime");
+        // 查询的缓存方式
+        query.setCachePolicy(BmobQuery.CachePolicy.CACHE_ELSE_NETWORK);
+        // 查询及事件监听器
+        query.findObjects(getContext(), new FindListener<Course>() {
 
-        @Override
-        protected Void doInBackground(Void... params) {
-            // TODO 进行网络操作前都要先判断网络状态是否可用
-            // 创建查询
-            BmobQuery<Course> query = new BmobQuery<Course>();
-            // 查询的结果排序方式，按更新时间倒序排列
-            query.order("-courseUpdateTime");
-            // 查询的缓存方式
-            query.setCachePolicy(BmobQuery.CachePolicy.CACHE_ELSE_NETWORK);
-            // 查询及事件监听器
-            query.findObjects(getContext(), new FindListener<Course>() {
+            @Override
+            public void onSuccess(List<Course> courses) {
+                // 创建适配器与绑定适配器
+                mAdapter = new CourseAdapter(getContext(),courses);
+                listView.setAdapter(mAdapter);
+            }
 
-                @Override
-                public void onSuccess(List<Course> courses) {
-                    // 创建适配器与绑定适配器
-                    mAdapter = new CourseAdapter(getContext(),courses);
-                    listView.setAdapter(mAdapter);
-                }
+            @Override
+            public void onError(int code, String arg0) {
 
-                @Override
-                public void onError(int code, String arg0) {
-
-                }
-            });
-            return null;
-        }
+            }
+        });
     }
 
     /**
@@ -179,3 +188,7 @@ public class CoursesFragment extends Fragment {
 
 
 }
+
+
+
+

@@ -2,6 +2,7 @@ package com.ikok.teachingwebsite.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -9,8 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ikok.teachingwebsite.Entity.Comment;
-import com.ikok.teachingwebsite.Entity.Post;
+import com.ikok.teachingwebsite.Entity.Course;
+import com.ikok.teachingwebsite.Entity.CourseComment;
 import com.ikok.teachingwebsite.Entity.User;
 import com.ikok.teachingwebsite.R;
 
@@ -20,12 +21,11 @@ import java.util.Locale;
 
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.listener.SaveListener;
-import qiu.niorgai.StatusBarCompat;
 
 /**
- * Created by Anonymous on 2016/4/24.
+ * Created by Anonymous on 2016/5/10.
  */
-public class WritePostCommentActivity extends BaseActivity {
+public class WriteCourseCommentActivity extends BaseActivity {
 
     /**
      * 顶部条的图片和文字
@@ -40,16 +40,15 @@ public class WritePostCommentActivity extends BaseActivity {
     /**
      * 当前Post对象
      */
-    private Post mPost;
+    private Course mCourse;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write_post_comment);
-//        StatusBarUtil.setColor(WritePostCommentActivity.this, getResources().getColor(R.color.colorMain));
-        StatusBarCompat.setStatusBarColor(this, getResources().getColor(R.color.colorMain));
+
         Intent intent = getIntent();
-        mPost = (Post) intent.getSerializableExtra("post");
+        mCourse = (Course) intent.getSerializableExtra("course");
 
         // 初始化控件
         mTopbarBackBtn = (ImageView) findViewById(R.id.id_top_bar_img);
@@ -74,22 +73,22 @@ public class WritePostCommentActivity extends BaseActivity {
                 // 评论内容
                 String content = mCommentContent.getText().toString();
                 // 评论用户，获取当前的用户
-                final User user = BmobUser.getCurrentUser(WritePostCommentActivity.this,User.class);
+                final User user = BmobUser.getCurrentUser(WriteCourseCommentActivity.this,User.class);
                 // 评论时间
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
                 String currentTime = format.format(new Date());
 //                Log.d("Anonymous","当前时间 is: " + currentTime);
                 // 创建数据
-                Comment comment = new Comment();
+                CourseComment comment = new CourseComment();
                 comment.setCommentContent(content);
                 comment.setCommentUser(user);
                 comment.setCommentPublishTime(currentTime);
-                comment.setCommentPost(mPost);
-                comment.save(WritePostCommentActivity.this, new SaveListener() {
+                comment.setCommentCourse(mCourse);
+                comment.save(WriteCourseCommentActivity.this, new SaveListener() {
                     @Override
                     public void onSuccess() {
-                        Toast.makeText(WritePostCommentActivity.this,"评论成功",Toast.LENGTH_SHORT).show();
-                        WritePostCommentActivity.this.finish();
+                        Toast.makeText(WriteCourseCommentActivity.this,"评论成功",Toast.LENGTH_SHORT).show();
+                        WriteCourseCommentActivity.this.finish();
                     }
 
                     @Override
@@ -100,7 +99,6 @@ public class WritePostCommentActivity extends BaseActivity {
 
             }
         });
-
 
     }
 }

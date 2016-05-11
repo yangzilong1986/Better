@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="@color/colorMain"
+        >
+
+        <ImageView
+            android:id="@+id/id_top_bar_img"
+            android:src="@drawable/icon_arrow_left_24dp"
+            android:scaleType="centerInside"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"/>
+
+        <EditText
+            android:id="@+id/id_search_content"
+            android:hint="@string/text_search_hint"
+            android:textColorHint="@color/deep_white"
+            android:textColor="@color/white"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            />
+
+        <ImageView
+            android:id="@+id/id_search_btn"
+            android:src="@drawable/icon_search"
+            android:scaleType="centerInside"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:text="@string/text_search_result"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/colorHint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ListView
+        android:id="@+id/is_search_result"
+
+        android:layout_width="match_parent"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </ListView>
+
+    <RelativeLayout
+        android:id="@+id/id_no_data_layout"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
+
+        <TextView
+            android:gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawableTop="@drawable/icon_has_no_data"
+            android:text="@string/has_no_data"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

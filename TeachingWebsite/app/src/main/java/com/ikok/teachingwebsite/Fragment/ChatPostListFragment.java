@@ -1,7 +1,8 @@
 package com.ikok.teachingwebsite.Fragment;
 
 import android.content.Intent;
-import android.os.AsyncTask;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -63,7 +64,10 @@ public class ChatPostListFragment extends Fragment {
         mRefreshLayout.setOnRefreshListener(new MyListener());
         mListView = (ListView) mView.findViewById(R.id.id_chat_viewpager1_list);
 
-        new LoadPostTask().execute();
+        mListView.setDivider(new ColorDrawable(Color.LTGRAY));
+        mListView.setDividerHeight(1);
+
+        LoadPost();
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -82,38 +86,32 @@ public class ChatPostListFragment extends Fragment {
     }
 
     /**
-     * 加载所有文章的异步任务
+     * 加载所有文章
      */
-    class LoadPostTask extends AsyncTask<Void,Void,List<Post>>{
-
-        @Override
-        protected List<Post> doInBackground(Void... params) {
-            // TODO 进行网络操作前都要先判断网络状态是否可用
-            // 创建查询
-            BmobQuery<Post> query = new BmobQuery<Post>();
-            // 查询的结果排序方式，按更新时间倒序排列
-            query.order("-updatedAt");
-            // 查询的缓存方式
+    private void LoadPost(){
+        // TODO 进行网络操作前都要先判断网络状态是否可用
+        // 创建查询
+        BmobQuery<Post> query = new BmobQuery<Post>();
+        // 查询的结果排序方式，按更新时间倒序排列
+        query.order("-updatedAt");
+        // 查询的缓存方式
 //            query.setCachePolicy(BmobQuery.CachePolicy.CACHE_ELSE_NETWORK);
-            // 查询及事件监听器
-            // 查询的时候把用户也查询出来，跳转到具体项的时候可以直接使用用户表的操作
-            query.include("postAuthor");
-            query.findObjects(getContext(), new FindListener<Post>() {
-                @Override
-                public void onSuccess(List<Post> list) {
+        // 查询及事件监听器
+        // 查询的时候把用户也查询出来，跳转到具体项的时候可以直接使用用户表的操作
+        query.include("postAuthor");
+        query.findObjects(getContext(), new FindListener<Post>() {
+            @Override
+            public void onSuccess(List<Post> list) {
 //                    Log.d("Anonymous","Post list is: " + list.size());
-                    mAdapter = new PostAdapter(getContext(),list);
-                    mListView.setAdapter(mAdapter);
-                }
+                mAdapter = new PostAdapter(getContext(),list);
+                mListView.setAdapter(mAdapter);
+            }
 
-                @Override
-                public void onError(int i, String s) {
+            @Override
+            public void onError(int i, String s) {
 
-                }
-            });
-            return null;
-        }
-
+            }
+        });
     }
 
     /**
@@ -122,6 +120,6 @@ public class ChatPostListFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        new LoadPostTask().execute();
+        LoadPost();
     }
 }
