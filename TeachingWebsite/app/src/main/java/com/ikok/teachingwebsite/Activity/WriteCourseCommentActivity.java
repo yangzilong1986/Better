@@ -21,6 +21,7 @@ import java.util.Locale;
 
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.listener.SaveListener;
+import qiu.niorgai.StatusBarCompat;
 
 /**
  * Created by Anonymous on 2016/5/10.
@@ -46,6 +47,7 @@ public class WriteCourseCommentActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write_post_comment);
+        StatusBarCompat.setStatusBarColor(this, getResources().getColor(R.color.colorMain));
 
         Intent intent = getIntent();
         mCourse = (Course) intent.getSerializableExtra("course");

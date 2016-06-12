@@ -88,7 +88,7 @@ public class CourseItemActivity extends FragmentActivity {
     @Bind(R.id.id_course_bottom_bar_back) ImageView mCommentBtn;
     @Bind(R.id.id_course_bottom_bar_like) LikeButton mLikeBtn;
     @Bind(R.id.id_course_bottom_bar_download) ImageView mDownloadBtn;
-    @Bind(R.id.id_course_bottom_bar_share) ImageView mShareBtn;
+//    @Bind(R.id.id_course_bottom_bar_share) ImageView mShareBtn;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

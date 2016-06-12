@@ -39,12 +39,12 @@
         android:layout_weight="1"
         android:layout_height="50dp"/>
 
-    <ImageView
-        android:id="@+id/id_post_bottom_bar_share"
-        android:src="@drawable/icon_share"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:scaleType="centerInside"
-        android:layout_height="50dp"/>
+    <!--<ImageView-->
+        <!--android:id="@+id/id_post_bottom_bar_share"-->
+        <!--android:src="@drawable/icon_share"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_weight="1"-->
+        <!--android:scaleType="centerInside"-->
+        <!--android:layout_height="50dp"/>-->
 
 </LinearLayout>

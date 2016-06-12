@@ -230,7 +230,7 @@ public class ChatPostItemActivity extends Activity {
         mTopbarTitle = (TextView) findViewById(R.id.id_top_bar_title);
         mCommentBtn = (ImageView) findViewById(R.id.id_post_bottom_bar_back);
         mLikeButton = (LikeButton) findViewById(R.id.id_post_bottom_bar_like);
-        mShareBtn = (ImageView) findViewById(R.id.id_post_bottom_bar_share);
+//        mShareBtn = (ImageView) findViewById(R.id.id_post_bottom_bar_share);
     }
 
     /**
@@ -246,13 +246,13 @@ public class ChatPostItemActivity extends Activity {
             }
         });
         // 底部分享按钮事件
-        mShareBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-            }
-        });
+//        mShareBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//
+//            }
+//        });
 
     }
 

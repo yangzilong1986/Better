@@ -3,7 +3,7 @@
     android:id="@+id/loadmore_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray" >
+    android:background="@color/colorDefaultGray" >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="60dp"
-                android:background="@drawable/loading"
+                android:background="@drawable/icon_refresh"
                 android:visibility="gone" />
 
             <TextView
@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="@string/pullup_to_load"
-                android:textColor="@color/black"
+                android:textColor="@color/light_blue"
                 android:textSize="16sp" />
 
             <ImageView

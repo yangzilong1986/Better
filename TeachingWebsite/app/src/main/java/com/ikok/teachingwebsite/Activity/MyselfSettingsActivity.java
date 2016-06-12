@@ -249,23 +249,39 @@ public class MyselfSettingsActivity extends Activity implements View.OnClickList
     private void changeUserImg() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(
                 this);
-        String[] lists = { "拍照上传", "相册选取", "取消" };
+//        String[] lists = { "拍照上传", "相册选取", "取消" };
+//        builder.setItems(lists, new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                switch (which) {
+//                    case 0:
+//                        onSelectCamera();
+//                        break;
+//                    case 1:
+//                        onSelectAlbum();
+//                        break;
+//                    case 2:
+//
+//                        break;
+//                }
+//            }
+//        });
+
+        String[] lists = { "相册选取", "取消" };
         builder.setItems(lists, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 switch (which) {
                     case 0:
-                        onSelectCamera();
-                        break;
-                    case 1:
                         onSelectAlbum();
                         break;
-                    case 2:
+                    case 1:
 
                         break;
                 }
             }
         });
+
         builder.setCancelable(true);
         builder.create().show();
     }
